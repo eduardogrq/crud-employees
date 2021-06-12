@@ -9,12 +9,17 @@ function create(employee){
     return Employees.create(employee)
 }
 
-// function findPost(id){
-//     return Posts.findById(id)
+function updateById(id, dataToUpdate) {
+    return Employees.findByIdAndUpdate(id, dataToUpdate)
+}
+
+// function findEmployee(id){
+//     return Employees.findById(id)
 // }
 
 
 module.exports = {
     getAll,
-    create
+    create,
+    updateById
 }

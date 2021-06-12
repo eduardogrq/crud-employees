@@ -30,8 +30,10 @@ const employeesScheme = new mongoose.Schema({
         require : true
     },
     company: {
-        type: Number,
-        require : true
+        type: String,
+        require : true,
+        // Field protected to patch method
+        immutable: true
     },
     image:{
         type: String,
