@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React from 'react'
 
 const EmployeesTable = () => {
 
@@ -20,8 +20,7 @@ const EmployeesTable = () => {
         setEmployee(employees)
     }
 
-
-
+    // Formato de moneda
     let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'MXN',
@@ -34,12 +33,11 @@ const EmployeesTable = () => {
 
     return (
         <div>
-
-            <div className="col-12">
-            <button onClick={() => setCurrency(!currency)}>Change currency</button>
+            <div className="col-12 mb-3">
+                <button className="btn btn-outline-success" onClick={() => setCurrency(!currency)}>Cambiar moneda</button>
             </div>
 
-            <table className="table table-striped col-12 col-lg-6">
+            <table className="table table-striped table-hover table-striped col-12 col-lg-6">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -67,7 +65,8 @@ const EmployeesTable = () => {
                                 <td>{item.lastName}</td>
                                 <td>{item.age}</td>
                                 <td>{item.email}</td>
-                                <td>{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
+                                {/* Condicional para cambiar  */}
+                                <td className={item.salary > 10000 ? "green" +  " text-right" : "red"+  " text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
                                 <td>{item.company}</td>
                                 
                             </tr>
