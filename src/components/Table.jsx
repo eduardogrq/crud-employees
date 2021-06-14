@@ -1,6 +1,8 @@
 
 import React from 'react'
 import PostForm from './PostForm'
+import EditForm from './EditForm'
+
 
 const EmployeesTable = () => {
 
@@ -75,6 +77,7 @@ const EmployeesTable = () => {
                             <th>Email</th>
                             <th>Salary {currency ? 'MXN' : 'USD'}</th>
                             <th>Company</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody className="col-6">
@@ -85,7 +88,7 @@ const EmployeesTable = () => {
                                 <tr key={item._id}>
                                     <th>{index + 1}</th>
                                     <td>
-                                        <img src={item.image} alt="img"/>
+                                        <img className="img-size" src={item.image} alt="img"/>
                                     </td>
                                     <td>{item.name}</td>
                                     <td>{item.lastName}</td>
@@ -94,6 +97,22 @@ const EmployeesTable = () => {
                                     {/* Condicional para cambiar clase de color */}
                                     <td className={ item.salary > 10000 ? "green text-right" : "red text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
                                     <td >{item.company}</td>
+
+                                    <td>
+                                        <EditForm 
+                                            id={item._id}
+                                            name={item.name}
+                                            lastName={item.lastName}
+                                            age={item.age}
+                                            email={item.email}
+                                            salary={item.salary}
+                                            company={item.company}
+                                            image={item.image}
+                                        />
+                                        <i className="fas fa-edit cursor-pointer" data-toggle="modal" data-target="#editModal" onClick={() => {
+                                                console.log(item._id, item.name)
+                                            }}></i>
+                                    </td>
                                     
                                 </tr>
                             )

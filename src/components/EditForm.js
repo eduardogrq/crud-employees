@@ -1,53 +1,42 @@
-import React, {Component} from 'react'
 
-export class PostForm extends Component {
+import React, { Component } from 'react'
 
-    constructor(props) {
+export class PatchForm extends Component {
+
+    constructor(props){
         super(props)
-
         this.state = {
-            name: '',
-            lastName: '',
-            age: '',
-            email: '',
-            salary: 0,
-            company: '',
-            image: ''
+            name: props.name,
+            lastName: props.lastName,
+            age: props.age,
+            email: props.email,
+            salary: props.salary,
+            company: props.company,
+            image: props.image
         }
-        
-    } 
+    }
+
 
     changeHandler = e => {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    submitHandler = e => {
-        e.preventDefault()
-        fetch('http://localhost:8080', {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-            
-        })
-    }
 
-    render() {
+    render(){
         const {name, lastName, age, email, salary, company, image} = this.state
         return(
-            <div className="modal fade" id="createModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="editModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Create an employee</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">New message</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body" >
-                            <form onSubmit={this.submitHandler}>
-                                <div className="form-group">
+                        <div className="modal-body">
+                            <form>
+                            <div className="form-group">
                                     <label className="col-form-label">Name:</label>
                                     <input type="text" className="form-control" name="name" value={name} onChange={this.changeHandler}></input>
                                 </div>
@@ -69,7 +58,7 @@ export class PostForm extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label className="col-form-label">Company:</label>
-                                    <input type="text" className="form-control" name="company" value={company} onChange={this.changeHandler}></input>
+                                    <input type="text" readOnly className="form-control" name="company" placeholder={company} onChange={this.changeHandler}></input>
                                 </div>
                                 <div className="form-group">
                                     <label className="col-form-label">URL img:</label>
@@ -84,12 +73,16 @@ export class PostForm extends Component {
                                 </div>
                             </form>
                         </div>
-                        
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Send message</button>
+                        </div>
                     </div>
                 </div>
             </div>
         )
     }
+
 }
 
-export default PostForm
+export default PatchForm
