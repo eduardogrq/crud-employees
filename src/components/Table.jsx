@@ -41,7 +41,7 @@ const EmployeesTable = () => {
                     <button type="button" className=" m-2 btn btn-outline-success" data-toggle="modal" data-target="#createModal">Create Employee</button>
                 </div>
                 
-                <table className="table table-dark text-center col-12 col-md-6 offset-lg-3">
+                <table className="table table-dark text-center col-12 col-lg-6 offset-lg-3">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col">Total employees</th>
@@ -63,44 +63,48 @@ const EmployeesTable = () => {
             {/* Form para creación de empleados */}
             <PostForm />
 
-            <table className="table table-hover table-striped col-12">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Avatar</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Salary {currency ? 'MXN' : 'USD'}</th>
-                        <th scope="col">Company</th>
-                    </tr>
-                </thead>
-                <tbody className="col-6">
-                {
-                    // Iteramos para obtener los datos de cada empleado e imprimirlos en el DOM
-                    employee.map((item, index) => {
-                        return (
-                            <tr key={item._id}>
-                                <th scope="row">{index + 1}</th>
-                                <td>
-                                    <img src={item.image} alt="img"/>
-                                </td>
-                                <td>{item.name}</td>
-                                <td>{item.lastName}</td>
-                                <td>{item.age}</td>
-                                <td>{item.email}</td>
-                                {/* Condicional para cambiar clase de color */}
-                                <td className={ item.salary > 10000 ? "green" +  " text-right" : "red"+  " text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
-                                <td>{item.company}</td>
-                                
-                            </tr>
-                        )
-                    })
-                }
-                </tbody>
-                
-            </table>
+            <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                <table className="table table-hover table-striped col-12">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Avatar</th>
+                            <th>Name</th>
+                            <th>Last name</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            <th>Salary {currency ? 'MXN' : 'USD'}</th>
+                            <th>Company</th>
+                        </tr>
+                    </thead>
+                    <tbody className="col-6">
+                    {
+                        // Iteramos para obtener los datos de cada empleado e imprimirlos en el DOM
+                        employee.map((item, index) => {
+                            return (
+                                <tr key={item._id}>
+                                    <th>{index + 1}</th>
+                                    <td>
+                                        <img src={item.image} alt="img"/>
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>{item.lastName}</td>
+                                    <td>{item.age}</td>
+                                    <td>{item.email}</td>
+                                    {/* Condicional para cambiar clase de color */}
+                                    <td className={ item.salary > 10000 ? "green text-right" : "red text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
+                                    <td >{item.company}</td>
+                                    
+                                </tr>
+                            )
+                        })
+                    }
+                    </tbody>
+                    
+                </table>
+            </div>
+
+            
 
             
         </div>

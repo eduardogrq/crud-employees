@@ -9,6 +9,13 @@ html, body{
 .green{
     color: green; 
 }
-.newTable{
-    overflow-x:auto;
+
+/* Clases para hacer responsiva la tabla, permitir scroll horizontal */
+.my-custom-scrollbar {
+    position: relative;
+    width: 100;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
 }
