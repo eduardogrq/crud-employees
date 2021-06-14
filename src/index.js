@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Table from './components/Table.jsx';
-import './css/style.css';
+import Table from './components/Table';
+import '../src/css/style.css';
 
 const divRoot = document.querySelector('#root')
 

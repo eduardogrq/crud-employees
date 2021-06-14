@@ -9,3 +9,6 @@ html, body{
 .green{
     color: green; 
 }
+.newTable{
+    overflow-x:auto;
+}

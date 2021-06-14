@@ -1,5 +1,6 @@
 
 import React from 'react'
+import PostForm from './PostForm'
 
 const EmployeesTable = () => {
 
@@ -33,25 +34,48 @@ const EmployeesTable = () => {
 
     return (
         <div>
-            <div className="col-12 mb-3">
-                <button className="btn btn-outline-success" onClick={() => setCurrency(!currency)}>Cambiar moneda</button>
+            <div className="col-12 text-center">
+                <div className="col-12 col-lg-6 offset-lg-3">
+                    <button className="btn m-2 btn-outline-success" onClick={() => setCurrency(!currency)}>Change Currency</button>
+                    <button type="button" className=" m-2 btn btn-outline-success" data-toggle="modal" data-target="#createModal">Create Employee</button>
+                </div>
+                
+                <table className="table table-dark text-center col-12 col-md-6 offset-lg-3">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th scope="col">Total employees</th>
+                            <th scope="col">Currency</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{employee.length}</th>
+                            <th>{ currency ? "MXN" : "USD" }</th>
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
 
-            <table className="table table-striped table-hover table-striped col-12 col-lg-6">
+
+            {/* Form para creación de empleados */}
+            <PostForm />
+
+            <table className="table table-hover col-12">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Avatar</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Lastname</th>
+                        <th scope="col">Last name</th>
                         <th scope="col">Age</th>
                         <th scope="col">Email</th>
                         <th scope="col">Salary {currency ? 'MXN' : 'USD'}</th>
                         <th scope="col">Company</th>
-                        
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="col-6">
                 {
                     // Iteramos para obtener los datos de cada empleado e imprimirlos en el DOM
                     employee.map((item, index) => {
@@ -65,8 +89,8 @@ const EmployeesTable = () => {
                                 <td>{item.lastName}</td>
                                 <td>{item.age}</td>
                                 <td>{item.email}</td>
-                                {/* Condicional para cambiar  */}
-                                <td className={item.salary > 10000 ? "green" +  " text-right" : "red"+  " text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
+                                {/* Condicional para cambiar clase de color */}
+                                <td className={ item.salary > 10000 ? "green" +  " text-right" : "red"+  " text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
                                 <td>{item.company}</td>
                                 
                             </tr>
