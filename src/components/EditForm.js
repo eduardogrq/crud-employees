@@ -6,6 +6,7 @@ export class PatchForm extends Component {
     constructor(props){
         super(props)
         this.state = {
+            id: props.id,
             name: props.name,
             lastName: props.lastName,
             age: props.age,
@@ -23,7 +24,7 @@ export class PatchForm extends Component {
 
 
     render(){
-        const {name, lastName, age, email, salary, company, image} = this.state
+        const { name, lastName, age, email, salary, company, image} = this.state
         return(
             <div className="modal fade" id="editModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -72,10 +73,6 @@ export class PatchForm extends Component {
                                     }}>Save changes</button>
                                 </div>
                             </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Send message</button>
                         </div>
                     </div>
                 </div>

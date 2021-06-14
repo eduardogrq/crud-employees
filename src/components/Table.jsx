@@ -109,9 +109,7 @@ const EmployeesTable = () => {
                                             company={item.company}
                                             image={item.image}
                                         />
-                                        <i className="fas fa-edit cursor-pointer" data-toggle="modal" data-target="#editModal" onClick={() => {
-                                                console.log(item._id, item.name)
-                                            }}></i>
+                                        <i className="fas fa-edit cursor-pointer" data-toggle="modal" data-target="#editModal" onClick={()=> {console.log(item._id)}}></i>
                                     </td>
                                     
                                 </tr>
