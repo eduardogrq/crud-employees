@@ -36,6 +36,7 @@ const EmployeesTable = () => {
         <div>
             <div className="col-12 text-center">
                 <div className="col-12 col-lg-6 offset-lg-3">
+                    {/* Condicional para cambiar entre false and true */}
                     <button className="btn m-2 btn-outline-success" onClick={() => setCurrency(!currency)}>Change Currency</button>
                     <button type="button" className=" m-2 btn btn-outline-success" data-toggle="modal" data-target="#createModal">Create Employee</button>
                 </div>
@@ -62,7 +63,7 @@ const EmployeesTable = () => {
             {/* Form para creación de empleados */}
             <PostForm />
 
-            <table className="table table-hover col-12">
+            <table className="table table-hover table-striped col-12">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

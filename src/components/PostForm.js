@@ -63,7 +63,7 @@ export class PostForm extends Component {
                                     <input type="email" className="form-control" name="email" value={email} onChange={this.changeHandler}></input>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-form-label">Salary:</label>
+                                    <label className="col-form-label">Salary (MXN):</label>
                                     <input type="number" className="form-control" name="salary" value={salary} onChange={this.changeHandler}></input>
                                 </div>
                                 <div className="form-group">
