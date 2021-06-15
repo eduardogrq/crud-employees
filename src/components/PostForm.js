@@ -73,7 +73,7 @@ export class PostForm extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label className="col-form-label">URL img:</label>
-                                    <input type="text" className="form-control" name="company" value={image} onChange={this.changeHandler}></input>
+                                    <input type="text" className="form-control" name="image" value={image} onChange={this.changeHandler}></input>
                                 </div>
                                 {/* <button type="submit">Submit</button> */}
                                 <div className="modal-footer">

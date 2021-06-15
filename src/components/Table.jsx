@@ -11,9 +11,9 @@ const EmployeesTable = () => {
     const [currency, setCurrency] = React.useState(true)
 
     // Ejecutamos la función en solo una ocasión con useEffect
-    React.useEffect( () => {
-        obtenerDatos()
-    }, [])
+    // React.useEffect( () => {
+    //     obtenerDatos()
+    // }, [])
 
     // Obtenemos los datos de los empleados
     const obtenerDatos = async () => {
@@ -33,6 +33,8 @@ const EmployeesTable = () => {
         style: 'currency',
         currency: 'USD',
     });
+
+    obtenerDatos()
 
     return (
         <div>
@@ -84,32 +86,35 @@ const EmployeesTable = () => {
                     {
                         // Iteramos para obtener los datos de cada empleado e imprimirlos en el DOM
                         employee.map((item, index) => {
+                            let {_id, name, lastName, age, email, salary, company, image} = item
                             return (
-                                <tr key={item._id}>
+                                <tr key={_id}>
                                     <th>{index + 1}</th>
                                     <td>
-                                        <img className="img-size" src={item.image} alt="img"/>
+                                        <img className="img-size" src={image} alt="img"/>
                                     </td>
-                                    <td>{item.name}</td>
-                                    <td>{item.lastName}</td>
-                                    <td>{item.age}</td>
-                                    <td>{item.email}</td>
+                                    <td>{name}</td>
+                                    <td>{lastName}</td>
+                                    <td>{age}</td>
+                                    <td>{email}</td>
                                     {/* Condicional para cambiar clase de color */}
-                                    <td className={ item.salary > 10000 ? "green text-right" : "red text-right"} >{ currency ? formatter.format(item.salary) : formatterUSD.format(item.salary * 21.5)}</td>
-                                    <td >{item.company}</td>
+                                    <td className={ salary > 10000 ? "green text-right" : "red text-right"} >{ currency ? formatter.format(salary) : formatterUSD.format(salary * 21.5)}</td>
+                                    <td >{company}</td>
 
                                     <td>
+                                        
+                                        <i className="fas fa-edit cursor-pointer" data-toggle="modal" data-target="#editModal" onClick={() => {}}></i>
+
                                         <EditForm 
-                                            id={item._id}
-                                            name={item.name}
-                                            lastName={item.lastName}
-                                            age={item.age}
-                                            email={item.email}
-                                            salary={item.salary}
-                                            company={item.company}
-                                            image={item.image}
+                                            id={_id}
+                                            name={name}
+                                            lastName={lastName}
+                                            age={age}
+                                            email={email}
+                                            salary={salary}
+                                            company={company}
+                                            image={image}
                                         />
-                                        <i className="fas fa-edit cursor-pointer" data-toggle="modal" data-target="#editModal" onClick={()=> {console.log(item._id)}}></i>
                                     </td>
                                     
                                 </tr>
